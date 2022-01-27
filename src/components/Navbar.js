@@ -14,7 +14,7 @@ function Navbar() {
     <div>
       <nav class="navbar navbar-expand-lg bg-dark">
         <a class="navbar-brand" href="/home">
-          Booking@ezy
+          @Viotels
         </a>
         <button
           class="navbar-toggler"

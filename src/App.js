@@ -7,6 +7,7 @@ import Bookingscreen from "./screens/Bookingscreen";
 import Registerscreen from "./screens/Registerscreen";
 import Loginscreen from "./screens/Loginscreen";
 import Profilescreen from "./screens/Profilescreen";
+import Adminscreen from "./screens/Adminscreen";
 
 function App() {
   return (
@@ -55,12 +56,22 @@ function App() {
             }
           />
 
-<Route
+          <Route
             exact
             path="/profile"
             element={
               <Suspense fallback={<div className="loader"></div>}>
                 <Profilescreen />
+              </Suspense>
+            }
+          />
+
+<Route
+            exact
+            path="/admin"
+            element={
+              <Suspense fallback={<div className="loader"></div>}>
+                <Adminscreen />
               </Suspense>
             }
           />

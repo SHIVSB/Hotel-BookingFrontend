@@ -29,6 +29,7 @@ function Loginscreen() {
 
                 localStorage.setItem('user', response.data.result.name);
                 localStorage.setItem('userid', response.data.result._id);
+                localStorage.setItem('admin', response.data.result.isAdmin);
                 window.location.href = "/home";
             }
         })
