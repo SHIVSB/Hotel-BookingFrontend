@@ -37,6 +37,10 @@ code {
   width: max-content;
 }
 
+.ant-picker, .ant-range-picker {
+  border: 2px solid black !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

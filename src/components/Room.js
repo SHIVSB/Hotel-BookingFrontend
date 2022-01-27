@@ -22,9 +22,13 @@ function Room({ room , fromdate, todate}) {
           <p className="py-1">Type : {room.type}</p>
         </b>
         <div style={{ float: "right" }}>
-          <a href={`/book/${room._id}/${fromdate}/${todate}`}>
-            <button className="btn btn-primary m-2">Book Now</button>
-          </a>
+
+          {(fromdate && todate) && (
+             <a href={`/book/${room._id}/${fromdate}/${todate}`}>
+             <button className="btn btn-primary m-2">Book Now</button>
+           </a>
+          )}
+          
           <button className="btn btn-primary" onClick={handleShow}>
             View Details
           </button>

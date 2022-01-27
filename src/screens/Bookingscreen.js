@@ -19,6 +19,13 @@ function Bookingscreen() {
   const [totalamount, settotalamount] = useState();
 
   useEffect(() => {
+
+    const user = localStorage.getItem('user');
+
+    if(!user){
+      window.location.href="/login";
+    }
+
     async function fetchData() {
       try {
         setLoading(true);
@@ -60,6 +67,7 @@ function Bookingscreen() {
 
   return (
     <div className="m-5">
+      
       {loading ? (
         <h1 className="text-center my-auto"><Loader/></h1>
       ) : error ? (
@@ -77,7 +85,7 @@ function Bookingscreen() {
               <h3 className="text-2xl font-bold">Booking Details</h3>
               <hr />
               <b>
-                <p className="py-2">Name : </p>
+                <p className="py-2">Name : {localStorage.getItem('user')}</p>
                 <p className="py-2">From Date : {fromdate}</p>
                 <p className="py-2">To Date : {todate}</p>
                 <p className="py-2">Max Count : {room.maxcount}</p>

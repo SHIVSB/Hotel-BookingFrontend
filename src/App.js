@@ -6,6 +6,7 @@ import "./App.css";
 import Bookingscreen from "./screens/Bookingscreen";
 import Registerscreen from "./screens/Registerscreen";
 import Loginscreen from "./screens/Loginscreen";
+import Profilescreen from "./screens/Profilescreen";
 
 function App() {
   return (
@@ -50,6 +51,16 @@ function App() {
             element={
               <Suspense fallback={<div className="loader"></div>}>
                 <Loginscreen />
+              </Suspense>
+            }
+          />
+
+<Route
+            exact
+            path="/profile"
+            element={
+              <Suspense fallback={<div className="loader"></div>}>
+                <Profilescreen />
               </Suspense>
             }
           />
