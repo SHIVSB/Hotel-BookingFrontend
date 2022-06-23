@@ -24,7 +24,7 @@ function Registerscreen() {
       };
 
       axios
-        .post("http://localhost:4000/api/v1/signup", user)
+        .post("https:/hotelwebsite-backend.herokuapp.com/api/v1/signup", user)
         .then(function (response) {
             setLoading(true);
           if (response.data.success) {

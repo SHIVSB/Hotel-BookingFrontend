@@ -8,6 +8,7 @@ import Registerscreen from "./screens/Registerscreen";
 import Loginscreen from "./screens/Loginscreen";
 import Profilescreen from "./screens/Profilescreen";
 import Adminscreen from "./screens/Adminscreen";
+import LandingScreen from "./screens/LandingScreen";
 
 function App() {
   return (
@@ -15,6 +16,16 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
+
+          <Route 
+          exact
+          path="/"
+          element = {
+            <Suspense>
+              <LandingScreen/>
+            </Suspense>
+          }
+          />
           <Route
             exact
             path="/home"

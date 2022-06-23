@@ -11,6 +11,7 @@ const { TabPane } = Tabs;
 
 function Profilescreen() {
   const user = localStorage.getItem("user");
+  const admin = localStorage.getItem("admin");
 
   useEffect(() => {
     if (!user) {
@@ -26,7 +27,8 @@ function Profilescreen() {
     <div className="ml-2 mt-3">
       <Tabs defaultActiveKey="1" onChange={callback}>
         <TabPane tab="Profile" key="1">
-          <h1>My Profile : {user}</h1>
+          <h1 className="uppercase font-bold">My Profile : <span className="font-semibold">{user}</span></h1>
+          <h1 className="uppercase font-bold">Admin : <span className="font-semibold">{admin}</span></h1>
         </TabPane>
         <TabPane tab="Bookings" key="2">
           <MyBookings />
@@ -47,7 +49,7 @@ export function MyBookings() {
       setLoading(true);
       const userid = localStorage.getItem("userid");
       const data = await (
-        await axios.post("http://localhost:4000/api/v1/getbookingbyuserid", {
+        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getbookingbyuserid", {
           userid: userid,
         })
       ).data;
@@ -66,7 +68,7 @@ export function MyBookings() {
       setLoading(true);
 
       const result = await (
-        await axios.post("http://localhost:4000/api/v1/cancelbooking", {
+        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/cancelbooking", {
           bookingid,
           roomid,
         })

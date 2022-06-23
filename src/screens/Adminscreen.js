@@ -6,12 +6,14 @@ import Error from "../components/Error";
 const { TabPane } = Tabs;
 
 function Adminscreen() {
-  const admin = localStorage.getItem("admin");
 
   useEffect(() => {
-    if (!admin) {
-      window.location.href = "/home";
-    }
+    const admin = localStorage.getItem('admin');
+    console.log(admin);
+      if (!admin) {
+        window.location.href = "/home";
+        return;
+      }
   }, []);
 
   return (
@@ -43,9 +45,14 @@ export function Bookings() {
   const [error, seterror] = useState();
 
   useEffect(async () => {
+    const admin = localStorage.getItem('admin');
+      if (!admin) {
+        window.location = "https:/hotelwebsite-backend.herokuapp.com/home";
+        return;
+      }
     try {
       const data = await (
-        await axios.post("http://localhost:4000/api/v1/allbookings")
+        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/allbookings")
       ).data;
 
       setbookings(data);
@@ -62,7 +69,7 @@ export function Bookings() {
       <div className="col-md-10">
         <h1>Bookings</h1>
         {loading && <Loader />}
-        <table className="table table-bordered table-dark">
+        <table className="table table-bordered bg-slate-700 text-white">
           <thead className="bs">
             <tr>
               <th>Booking Id</th>
@@ -101,8 +108,13 @@ export function Rooms() {
 
   useEffect(async () => {
     try {
+      // const admin = localStorage.getItem('admin');
+      // if (admin) {
+      //   window.location.href = "/home";
+      //   return;
+      // }
       const data = await (
-        await axios.post("http://localhost:4000/api/v1/getallrooms")
+        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getallrooms")
       ).data.result;
 
       setrooms(data);
@@ -119,7 +131,7 @@ export function Rooms() {
       <div className="col-md-10">
         <h1>Rooms</h1>
         {loading && <Loader />}
-        <table className="table table-bordered table-dark">
+        <table className="table table-bordered bg-slate-700 text-white">
           <thead className="bs">
             <tr>
               <th>Room Id</th>
@@ -158,8 +170,14 @@ export function Users() {
 
   useEffect(async () => {
     try {
+      // const admin = localStorage.getItem('admin');
+      // if (admin) {
+      //   window.location.href = "/home";
+      //   return;
+      // }
+
       const data = await (
-        await axios.post("http://localhost:4000/api/v1/getallusers")
+        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getallusers")
       ).data;
 
       setusers(data);
@@ -176,7 +194,7 @@ export function Users() {
       <div className="col-md-10">
         <h1>Rooms</h1>
         {loading && <Loader />}
-        <table className="table table-bordered table-dark">
+        <table className="table table-bordered bg-slate-700 text-white">
           <thead className="bs">
             <tr>
               <th>User Id</th>
@@ -229,7 +247,12 @@ export function Addroom() {
     };
 
     try{
-        const result = await (await axios.post('http://localhost:4000/api/v1/addroom', newroom)).data;
+      // const admin = localStorage.getItem('admin');
+      // if (admin) {
+      //   window.location.href = "/home";
+      //   return;
+      // }
+        const result = await (await axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/addroom', newroom)).data;
     }catch(error){
         console.log(error);
     }

@@ -5,12 +5,15 @@ import "../index.css";
 import Loader from "react-spinners/RingLoader";
 import Error from "../components/Error";
 import moment from "moment";
+import swal from "sweetalert2";
+
 
 function Bookingscreen() {
   const [room, setRooms] = useState('');
   const [loading, setLoading] = useState('');
   const [error, setError] = useState(false);
   const { roomid , fromdate, todate} = useParams();
+  const [image, setImage] = useState();
 
   const fmdate = moment(fromdate, 'DD-MM-YYY');
   const tdate = moment(todate, 'DD-MM-YYY');
@@ -30,13 +33,14 @@ function Bookingscreen() {
       try {
         setLoading(true);
         const data = (
-          await axios.post("http://localhost:4000/api/v1/getroombyid", {
+          await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getroombyid", {
             roomid: roomid,
           })
         ).data.result;
         settotalamount(totaldays * data.rentperday)
         console.log(roomid);
         setRooms(data);
+        setImage(data.imageurls[0]);
         console.log(data);
         setLoading(false);
       } catch (error) {
@@ -59,7 +63,12 @@ function Bookingscreen() {
     }
 
     try {
-      const result = await axios.post('http://localhost:4000/api/v1/bookings/bookroom', bookingDetails)
+      const result = await axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/bookings/bookroom', bookingDetails);
+      swal
+        .fire("Congrats", "Sit back n Relax, Your room has been Booked Successfully..", "success")
+        .then((result) => {
+          window.location.reload();
+        });
     }catch(error){
       console.log(error);
     }
@@ -78,7 +87,7 @@ function Bookingscreen() {
             <b>
               <p className="py-2 font-extrabold">{room.name}</p>
             </b>
-            <img src={room.imageurls[0]} className="bigimg" />
+            <img src={image} className="bigimg" />
           </div>
           
             <div className="col-md-5" style={{ textAlign: "right", marginTop: 32}}>

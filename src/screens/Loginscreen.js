@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Loader from "react-spinners/RingLoader";
 import Error from "../components/Error";
 import Success from "../components/Success";
@@ -20,7 +20,7 @@ function Loginscreen() {
             password
         }
 
-        axios.post('http://localhost:4000/api/v1/login', user)
+        axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/login', user)
         .then(function (response) {
             setLoading(true);
             if(response.data.success) {
@@ -37,13 +37,13 @@ function Loginscreen() {
             
             console.log(error);
             setLoading(false);
-            window.location.href ="/login";
+            // window.location.href ="/login";
             setError(true);
         });
 
         // window.location.href = "/home";
         // try{
-        //     const result = await axios.post('http://localhost:4000/api/v1/login', user).data;
+        //     const result = await axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/login', user).data;
         // }catch(error){
         //     console.log(error);
         // }
@@ -56,10 +56,9 @@ function Loginscreen() {
         {loading && (<Loader/>)}
         {error && (<Error/>)}
         {success && (<Success message='Login successful'/>)}
-      <form
+      <div
         id="whoobe-t7qyk"
         class="justify-center items-center w-full shadow rounded-lg bg-white px-6 flex flex-col md:w-1/2 lg:w-1/3 m-auto"
-        method="post"
       >
         <h2 class="text-2xl my-4">Login</h2>
         <div id="whoobe-h90kl" class="w-full p-2 justify-start flex flex-col">
@@ -120,7 +119,7 @@ function Loginscreen() {
             Login
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

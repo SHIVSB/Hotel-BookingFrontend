@@ -22,7 +22,7 @@ function Homescreen() {
     try {
       setLoading(true);
       const data = (
-        await axios.post("http://localhost:4000/api/v1/getallrooms", {})
+        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getallrooms", {})
       ).data.result;
       setRooms(data);
       setduplicaterooms(data);
@@ -93,18 +93,18 @@ function Homescreen() {
 
   return (
     <div className="container">
-      <div className="row mt-5 bs w-4/5 border-black border-2 mx-auto">
+      <div className="sticky z-50 top-2 bg-white row mt-5 bs w-4/5 border-black border-2 mx-auto">
         <div className="col-md-3 mx-auto">
           <RangePicker format="DD-MM-YY" onChange={filterbydate} />
         </div>
 
         <div className="col-md-5 border-2 text-center border-black ">
-          <input className="text-center w-full outline-0"
+          <input  className="text-center  w-full outline-0"
           onChange={(e) => {setSearchKey(e.target.value)}} onKeyUp={filterbysearch}
           value={searchKey} type="text" placeholder="Search" />
         </div>
 
-        <div className="col-md-3 border-2 mx-auto border-black">
+        <div className="col-md-3 text-center border-2 mx-auto border-black">
         <select className="outline-0" value={type} onChange={(e) => {filterbytype(e.target.value)}}>
           <option value="all"> All </option>
           <option value="delux"> Delux </option>
@@ -113,7 +113,7 @@ function Homescreen() {
         </div>
       </div>
 
-      <div className={"row justify-content-center mt-5"}>
+      <div className={"relative row justify-content-center mt-5"}>
         {loading ? (
           <h1 className="text-center my-60">
             <Loader />
@@ -121,7 +121,7 @@ function Homescreen() {
         ) : (
           rooms.map((room) => {
             return (
-              <div className={"col-md-9 mt-2"}>
+              <div className={"col-md-9 my-2"}>
                 <Room room={room} fromdate={fromdate} todate={todate} />
               </div>
             );

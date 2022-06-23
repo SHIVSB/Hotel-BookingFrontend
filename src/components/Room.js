@@ -10,7 +10,7 @@ function Room({ room , fromdate, todate}) {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="row bs">
+    <div className="row bs py-24">
       <div className="col-md-4">
         <img src={room.imageurls[0]} className={"smallimg"} alt="hotel image" />
       </div>
