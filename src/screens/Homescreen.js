@@ -22,7 +22,7 @@ function Homescreen() {
     try {
       setLoading(true);
       const data = (
-        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getallrooms", {})
+        await axios.post("https://hotelwebsite-backend.herokuapp.com/api/v1/getallrooms", {})
       ).data.result;
       setRooms(data);
       setduplicaterooms(data);

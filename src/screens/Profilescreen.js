@@ -49,7 +49,7 @@ export function MyBookings() {
       setLoading(true);
       const userid = localStorage.getItem("userid");
       const data = await (
-        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getbookingbyuserid", {
+        await axios.post("https://hotelwebsite-backend.herokuapp.com/api/v1/getbookingbyuserid", {
           userid: userid,
         })
       ).data;

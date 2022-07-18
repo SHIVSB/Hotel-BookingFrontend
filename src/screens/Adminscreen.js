@@ -47,7 +47,7 @@ export function Bookings() {
   useEffect(async () => {
     const admin = localStorage.getItem('admin');
       if (!admin) {
-        window.location = "https:/hotelwebsite-backend.herokuapp.com/home";
+        window.location = "https://hotelwebsite-backend.herokuapp.com/home";
         return;
       }
     try {

@@ -20,7 +20,7 @@ function Loginscreen() {
             password
         }
 
-        axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/login', user)
+        axios.post('https://hotelwebsite-backend.herokuapp.com/api/v1/login', user)
         .then(function (response) {
             setLoading(true);
             if(response.data.success) {
