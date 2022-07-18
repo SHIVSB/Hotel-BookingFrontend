@@ -63,7 +63,7 @@ function Bookingscreen() {
     }
 
     try {
-      const result = await axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/bookings/bookroom', bookingDetails);
+      const result = await axios.post('https://hotelwebsite-backend.herokuapp.com/api/v1/bookings/bookroom', bookingDetails);
       swal
         .fire("Congrats", "Sit back n Relax, Your room has been Booked Successfully..", "success")
         .then((result) => {
