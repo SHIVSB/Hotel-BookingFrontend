@@ -43,7 +43,7 @@ function Loginscreen() {
 
         // window.location.href = "/home";
         // try{
-        //     const result = await axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/login', user).data;
+        //     const result = await axios.post('https://hotelwebsite-backend.herokuapp.com/api/v1/login', user).data;
         // }catch(error){
         //     console.log(error);
         // }

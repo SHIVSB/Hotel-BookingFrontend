@@ -68,7 +68,7 @@ export function MyBookings() {
       setLoading(true);
 
       const result = await (
-        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/cancelbooking", {
+        await axios.post("https://hotelwebsite-backend.herokuapp.com/api/v1/cancelbooking", {
           bookingid,
           roomid,
         })

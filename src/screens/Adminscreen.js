@@ -52,7 +52,7 @@ export function Bookings() {
       }
     try {
       const data = await (
-        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/allbookings")
+        await axios.post("https://hotelwebsite-backend.herokuapp.com/api/v1/allbookings")
       ).data;
 
       setbookings(data);
@@ -114,7 +114,7 @@ export function Rooms() {
       //   return;
       // }
       const data = await (
-        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getallrooms")
+        await axios.post("https://hotelwebsite-backend.herokuapp.com/api/v1/getallrooms")
       ).data.result;
 
       setrooms(data);
@@ -177,7 +177,7 @@ export function Users() {
       // }
 
       const data = await (
-        await axios.post("https:/hotelwebsite-backend.herokuapp.com/api/v1/getallusers")
+        await axios.post("https://hotelwebsite-backend.herokuapp.com/api/v1/getallusers")
       ).data;
 
       setusers(data);
@@ -252,7 +252,7 @@ export function Addroom() {
       //   window.location.href = "/home";
       //   return;
       // }
-        const result = await (await axios.post('https:/hotelwebsite-backend.herokuapp.com/api/v1/addroom', newroom)).data;
+        const result = await (await axios.post('https://hotelwebsite-backend.herokuapp.com/api/v1/addroom', newroom)).data;
     }catch(error){
         console.log(error);
     }
